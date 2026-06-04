@@ -1,0 +1,17 @@
+name: Saludo
+
+on:
+  push:
+    branches:
+      -main
+      -develop
+jobs:
+  saludo:
+    runs-on:  ubuntu-latest
+    steps: 
+      -name: Saludo desde main
+        if: github.ref == 'refs/heads/main'
+        run: echo "Saludo desde main, soy Rodrigo Baldeon"
+        
+      -name: Saludo desde develop
+        run: echo "Saludo desde develop, soy Rodrigo Baldeon"
