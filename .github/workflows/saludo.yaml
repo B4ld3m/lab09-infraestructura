@@ -1,6 +1,9 @@
 cat > .github/workflows/saludo.yaml << 'EOF'
 name: saludo
 
+opython3 -c "
+content = '''name: saludo
+
 on:
   push:
     branches:
@@ -8,7 +11,7 @@ on:
       - develop
 
 env:
-  MI_NOMBRE: "Rodrigo Baldeon"
+  MI_NOMBRE: \"Rodrigo Baldeon\"
 
 jobs:
   saludo:
@@ -16,9 +19,13 @@ jobs:
     steps:
       - name: Saludo desde main
         if: github.ref == 'refs/heads/main'
-        run: echo "Hola desde main, mi nombre es $MI_NOMBRE"
+        run: echo \"Hola desde main, mi nombre es \$MI_NOMBRE\"
 
       - name: Saludo desde develop
         if: github.ref == 'refs/heads/develop'
-        run: echo "Hola desde develop, mi nombre es $MI_NOMBRE"
-EOF
+        run: echo \"Hola desde develop, mi nombre es \$MI_NOMBRE\"
+'''
+with open('.github/workflows/saludo.yaml', 'w') as f:
+    f.write(content)
+print('Archivo creado correctamente')
+"
