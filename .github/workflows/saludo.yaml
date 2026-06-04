@@ -1,4 +1,4 @@
-name: Demostracion de un pipeline de GithubActions
+name: saludo
   on:
     push:
     branches:
