@@ -1,17 +1,16 @@
-name: Saludo
-
-on:
-  push:
+name: Demostracion de un pipeline de GithubActions
+  on:
+    push:
     branches:
-      -main
-      -develop
+    - main
+    - develop
 jobs:
   saludo:
-    runs-on:  ubuntu-latest
-    steps: 
-      -name: Saludo desde main
-        if: github.ref == 'refs/heads/main'
-        run: echo "Saludo desde main, soy Rodrigo Baldeon"
-        
-      -name: Saludo desde develop
-        run: echo "Saludo desde develop, soy Rodrigo Baldeon"
+    runs-on: ubuntu-latest
+    steps:
+    - name: Saludo desde main
+      if: github.ref == 'refs/heads/main'
+      run: echo "Hola desde main, mi nombre es Rodrigo Baldeon"
+    - name: Saludo desde develop
+      if: github.ref == 'refs/heads/develop'
+      run: echo "Hola desde develop, mi nombre es Rodrigo Baldeon"
