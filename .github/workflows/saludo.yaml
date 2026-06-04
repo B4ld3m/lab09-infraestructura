@@ -1,20 +1,24 @@
+cat > .github/workflows/saludo.yaml << 'EOF'
 name: saludo
-  on:
-    push:
+
+on:
+  push:
     branches:
-    - main
-    - develop
-    
+      - main
+      - develop
+
 env:
   MI_NOMBRE: "Rodrigo Baldeon"
-  
+
 jobs:
   saludo:
     runs-on: ubuntu-latest
     steps:
-    - name: Saludo desde main
-      if: github.ref == 'refs/heads/main'
-      run: echo "Hola desde main, mi nombre es $MI_NOMBRE"
-    - name: Saludo desde develop
-      if: github.ref == 'refs/heads/develop'
-      run: echo "Hola desde develop, mi nombre es $MI_NOMBRE"
+      - name: Saludo desde main
+        if: github.ref == 'refs/heads/main'
+        run: echo "Hola desde main, mi nombre es $MI_NOMBRE"
+
+      - name: Saludo desde develop
+        if: github.ref == 'refs/heads/develop'
+        run: echo "Hola desde develop, mi nombre es $MI_NOMBRE"
+EOF
